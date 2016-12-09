@@ -26,10 +26,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let list = UserDefaults.standard.object(forKey: "TODO")
-//        if let item = list as? NSMutableArray {
-//            arr = item
-//        }
         // Do any additional setup after loading the view, typically from a nib.
     }
     
