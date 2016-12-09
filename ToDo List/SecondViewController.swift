@@ -8,8 +8,33 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UITextFieldDelegate {
 
+    
+    @IBOutlet var itemToAdd: UITextField!
+    
+    @IBAction func addButton(_ sender: AnyObject) {
+        let item = UserDefaults.standard.object(forKey: "TODO")
+        var list:[String]
+        if let tempItem = item as? [String] {
+            list = tempItem
+            list.append(itemToAdd.text!)
+        } else {
+            list = [itemToAdd.text!]
+        }
+        UserDefaults.standard.set(list, forKey: "TODO")
+        itemToAdd.text = ""
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
